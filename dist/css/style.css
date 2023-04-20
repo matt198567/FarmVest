@@ -155,7 +155,8 @@ html.light body {
 }
 
 html.light body h1,
-html.light body h2 {
+html.light body h2,
+html.light body a {
   color: #263238;
 }
 
@@ -410,6 +411,166 @@ html.light .page__theme {
 .image-block__item img {
   max-width: 100%;
   border-radius: 1.25rem;
+}
+
+.backdrop {
+  z-index: 5;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.2);
+  opacity: 1;
+  -webkit-transition: opacity 0.3s ease 0s;
+  -o-transition: opacity 0.3s ease 0s;
+  transition: opacity 0.3s ease 0s;
+}
+
+.backdrop.is-hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.backdrop.is-hidden .modal {
+  -webkit-transform: translate(-50%, -50%) scale(0.9);
+      -ms-transform: translate(-50%, -50%) scale(0.9);
+          transform: translate(-50%, -50%) scale(0.9);
+}
+
+.modal {
+  max-width: 28.125rem;
+  max-height: 31.25rem;
+  background-color: rgb(29, 69, 104);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  border-radius: 0.25rem;
+  -webkit-transform: translate(-50%, -50%) scale(1);
+      -ms-transform: translate(-50%, -50%) scale(1);
+          transform: translate(-50%, -50%) scale(1);
+  -webkit-transition: -webkit-transform 0.3s ease 0s;
+  transition: -webkit-transform 0.3s ease 0s;
+  -o-transition: transform 0.3s ease 0s;
+  transition: transform 0.3s ease 0s;
+  transition: transform 0.3s ease 0s, -webkit-transform 0.3s ease 0s;
+}
+
+.modal__form {
+  margin-left: auto;
+  margin-right: auto;
+  padding: 2.5rem;
+}
+
+.modal__text {
+  font-weight: bold;
+  font-size: 1.25rem;
+  line-height: 1.2;
+  text-align: center;
+  letter-spacing: 0.03em;
+  margin-bottom: 0.75rem;
+}
+
+.modal__button {
+  width: 100%;
+}
+
+.button__modal-close {
+  cursor: pointer;
+  position: absolute;
+  right: 1.75rem;
+  top: 0.3125rem;
+}
+
+.modal-close__cancel {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+      -ms-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  width: 100%;
+  height: 100%;
+  -webkit-transition: fill 0.3s ease 0s;
+  -o-transition: fill 0.3s ease 0s;
+  transition: fill 0.3s ease 0s;
+}
+
+.form-field {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.form-field:not(:last-child) {
+  margin-bottom: 0.625rem;
+}
+
+.form-field__label {
+  margin-bottom: 4px;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 1.2;
+  letter-spacing: 0.01em;
+  color: #757575;
+}
+
+.form-field__input-wrap {
+  position: relative;
+}
+
+.form-field__input {
+  margin: 0;
+  border: 1px solid rgba(33, 33, 33, 0.2);
+  border-radius: 0.25rem;
+  width: 100%;
+  height: 2.5rem;
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 1.2;
+  letter-spacing: 0.01em;
+  color: #263238;
+  cursor: pointer;
+  outline: none;
+  padding: 12px;
+  padding-left: 42px;
+  -webkit-transition: border 0.3s ease 0s;
+  -o-transition: border 0.3s ease 0s;
+  transition: border 0.3s ease 0s;
+}
+
+.form-field__input:hover,
+.form-field__input:focus {
+  border-color: blue;
+}
+
+.form-field__icon-mail {
+  position: absolute;
+  left: 15px;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+      -ms-transform: translateY(-50%);
+          transform: translateY(-50%);
+  -webkit-transition: fill 0.3s ease 0s;
+  -o-transition: fill 0.3s ease 0s;
+  transition: fill 0.3s ease 0s;
+}
+
+.form-input:hover + .form-field__icon-mail,
+.form-input:focus + .form-field__icon-mail {
+  fill: blue;
+}
+
+.form-field__pasvord:not(:last-child) {
+  margin-bottom: 1.25rem;
+}
+
+.form-field .modal__button {
+  width: 100%;
 }
 
 .header {
@@ -1745,6 +1906,10 @@ html.light .page__theme {
 }
 
 @media (max-width: 29.99875em) {
+  .modal {
+    width: 80%;
+  }
+
   .footer__bottom {
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
